@@ -18,6 +18,7 @@
         }
     </script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
     <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -191,6 +192,15 @@
     </div>
 
    <script src="script.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(reg => console.log('✅ Service Worker registrado:', reg.scope))
+                .catch(err => console.error('❌ Error registrando el Service Worker:', err));
+        });
+    }
+</script>
 
 </body>
 </html>
